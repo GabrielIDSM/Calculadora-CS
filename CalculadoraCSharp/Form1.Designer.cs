@@ -53,6 +53,8 @@
             this.buttonDel = new System.Windows.Forms.Button();
             this.buttonOpPar = new System.Windows.Forms.Button();
             this.buttonClPar = new System.Windows.Forms.Button();
+            this.buttonLn = new System.Windows.Forms.Button();
+            this.buttonLog = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtbxExpressao
@@ -199,7 +201,7 @@
             this.buttonDot.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDot.Location = new System.Drawing.Point(78, 292);
             this.buttonDot.Name = "buttonDot";
-            this.buttonDot.Size = new System.Drawing.Size(126, 60);
+            this.buttonDot.Size = new System.Drawing.Size(60, 60);
             this.buttonDot.TabIndex = 12;
             this.buttonDot.Text = ".";
             this.buttonDot.UseVisualStyleBackColor = false;
@@ -257,7 +259,7 @@
             // 
             this.buttonDiv.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.buttonDiv.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDiv.Location = new System.Drawing.Point(210, 290);
+            this.buttonDiv.Location = new System.Drawing.Point(210, 292);
             this.buttonDiv.Name = "buttonDiv";
             this.buttonDiv.Size = new System.Drawing.Size(60, 60);
             this.buttonDiv.TabIndex = 17;
@@ -305,7 +307,7 @@
             // 
             this.buttonFat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.buttonFat.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonFat.Location = new System.Drawing.Point(276, 290);
+            this.buttonFat.Location = new System.Drawing.Point(144, 292);
             this.buttonFat.Name = "buttonFat";
             this.buttonFat.Size = new System.Drawing.Size(60, 60);
             this.buttonFat.TabIndex = 21;
@@ -349,11 +351,37 @@
             this.buttonClPar.UseVisualStyleBackColor = false;
             this.buttonClPar.Click += new System.EventHandler(this.buttonClPar_Click);
             // 
+            // buttonLn
+            // 
+            this.buttonLn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.buttonLn.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLn.Location = new System.Drawing.Point(276, 292);
+            this.buttonLn.Name = "buttonLn";
+            this.buttonLn.Size = new System.Drawing.Size(60, 60);
+            this.buttonLn.TabIndex = 25;
+            this.buttonLn.Text = "ln";
+            this.buttonLn.UseVisualStyleBackColor = false;
+            this.buttonLn.Click += new System.EventHandler(this.buttonLn_Click);
+            // 
+            // buttonLog
+            // 
+            this.buttonLog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.buttonLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLog.Location = new System.Drawing.Point(342, 292);
+            this.buttonLog.Name = "buttonLog";
+            this.buttonLog.Size = new System.Drawing.Size(126, 60);
+            this.buttonLog.TabIndex = 26;
+            this.buttonLog.Text = "Log";
+            this.buttonLog.UseVisualStyleBackColor = false;
+            this.buttonLog.Click += new System.EventHandler(this.buttonLog_Click);
+            // 
             // MainFrame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(481, 362);
+            this.Controls.Add(this.buttonLog);
+            this.Controls.Add(this.buttonLn);
             this.Controls.Add(this.buttonClPar);
             this.Controls.Add(this.buttonOpPar);
             this.Controls.Add(this.buttonDel);
@@ -414,6 +442,8 @@
         private System.Windows.Forms.Button buttonDel;
         private System.Windows.Forms.Button buttonOpPar;
         private System.Windows.Forms.Button buttonClPar;
+        private System.Windows.Forms.Button buttonLn;
+        private System.Windows.Forms.Button buttonLog;
     }
 }
 

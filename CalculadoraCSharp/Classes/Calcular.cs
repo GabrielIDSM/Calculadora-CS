@@ -55,6 +55,10 @@ namespace CalculadoraCSharp.Classes
                             resultado *= i;
                         }
                         return resultado;
+                    case 7: //Logaritmo natural
+                        return Math.Log(op1);
+                    case 8: //Logaritmo
+                        return Math.Log10(op1);
                     default:
                         Console.WriteLine("Erro: Operador inválido");
                         return 0.0;
@@ -67,7 +71,7 @@ namespace CalculadoraCSharp.Classes
         }
         private Boolean VerificaOperador(char c)
         {
-            return (c == '+' || c == '-' || c == '*' || c == '/' || c == '^' || c == 'R' || c == '!');
+            return (c == '+' || c == '-' || c == '*' || c == '/' || c == '^' || c == 'R' || c == '!' || c == 'L' || c == 'l');
         }
         private void CalculaFat()
         {
@@ -100,10 +104,20 @@ namespace CalculadoraCSharp.Classes
                 if (array[i] == operador1 || array[i] == operador2)
                 {
                     //Definir operandos
-                    String[] operandos = DefineOperandos(i);
+                    String[] operandos = null;
+                    String operando = null;
+                    if (operador1 == 'l' || operador1 == 'L' && operador2 == 'l' || operador2 == 'L')
+                    {
+                        operando = DefineOperandoDepSinal(i);
+                    }
+                    else
+                    {
+                        operandos = DefineOperandos(i);
+                    }    
                     //Definir resultado
                     int operadorInt = -1;
-                    if(array[i] == operador1)
+                    double resultado = 0.0;
+                    if (array[i] == operador1)
                     {
                         if (operador1 == '+') operadorInt = 0;
                         if (operador1 == '-') operadorInt = 1;
@@ -111,6 +125,8 @@ namespace CalculadoraCSharp.Classes
                         if (operador1 == '/') operadorInt = 3;
                         if (operador1 == '^') operadorInt = 4;
                         if (operador1 == 'R') operadorInt = 5;
+                        if (operador1 == 'l') operadorInt = 7;
+                        if (operador1 == 'L') operadorInt = 8;
                     }
                     else
                     {
@@ -120,8 +136,17 @@ namespace CalculadoraCSharp.Classes
                         if (operador2 == '/') operadorInt = 3;
                         if (operador2 == '^') operadorInt = 4;
                         if (operador2 == 'R') operadorInt = 5;
+                        if (operador2 == 'l') operadorInt = 7;
+                        if (operador2 == 'L') operadorInt = 8;
                     }
-                    double resultado = EfetuaCalculo(operandos[0], operandos[1], operadorInt);
+                    if(operador1 == 'l' || operador1 == 'L' && operador2 == 'l' || operador2 == 'L')
+                    {
+                        resultado = EfetuaCalculo(operando, "0.0", operadorInt);
+                    }
+                    else
+                    {
+                        resultado = EfetuaCalculo(operandos[0], operandos[1], operadorInt);
+                    }
                     //Substituir expressão original
                     SubstituiExpressao(i, resultado);
                     //Atualiza o Array
@@ -160,6 +185,20 @@ namespace CalculadoraCSharp.Classes
                 }
                 i++;
             }
+        }
+        private String DefineOperandoDepSinal(int index)
+        {
+            char[] array = getExpressao().ToCharArray();
+            String operando = "";
+            for (int i = index + 1; i < array.Length; i++)
+            {
+                if (VerificaOperador(array[i]))
+                {
+                    break;
+                }
+                operando += array[i];
+            }
+            return operando;
         }
         private String DefineOperandoAntSinal(int index)
         {
@@ -276,6 +315,7 @@ namespace CalculadoraCSharp.Classes
         public double CalculaExpressao()
         {
             CalculaFat();
+            CalculaPorOperador('L', 'l');
             CalculaPorOperador('^', 'R');
             CalculaPorOperador('*', '/');
             CalculaPorOperador('+', '-');

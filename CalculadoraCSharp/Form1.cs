@@ -41,6 +41,13 @@ namespace CalculadoraCSharp
             setExpressao(auxExpressao);
             AtualizaLabelExpressao();
         }
+        private void AdicionaAExpressao(String s)
+        {
+            String auxExpressao = getExpressao();
+            auxExpressao += s;
+            setExpressao(auxExpressao);
+            AtualizaLabelExpressao();
+        }
         //Métodos Automáticos
         private void button1_Click(object sender, EventArgs e)
         {
@@ -124,7 +131,7 @@ namespace CalculadoraCSharp
 
         private void buttonRad_Click(object sender, EventArgs e)
         {
-            AdicionaAExpressao('R');
+            AdicionaAExpressao("R(");
         }
 
         private void buttonFat_Click(object sender, EventArgs e)
@@ -142,6 +149,15 @@ namespace CalculadoraCSharp
             AdicionaAExpressao(')');
         }
 
+        private void buttonLn_Click(object sender, EventArgs e)
+        {
+            AdicionaAExpressao("l(");
+        }
+
+        private void buttonLog_Click(object sender, EventArgs e)
+        {
+            AdicionaAExpressao("L(");
+        }
         private void buttonResultado_Click(object sender, EventArgs e)
         {
             Expressoes E = new Expressoes(getExpressao());
