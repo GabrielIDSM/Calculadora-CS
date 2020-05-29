@@ -1,0 +1,9 @@
+C:\Users\Gabri\Programas\Git\Rep_calc_cs\CalculadoraCSharp\bin\Debug\CalculadoraCSharp.exe.config
+C:\Users\Gabri\Programas\Git\Rep_calc_cs\CalculadoraCSharp\bin\Debug\CalculadoraCSharp.exe
+C:\Users\Gabri\Programas\Git\Rep_calc_cs\CalculadoraCSharp\bin\Debug\CalculadoraCSharp.pdb
+C:\Users\Gabri\Programas\Git\Rep_calc_cs\CalculadoraCSharp\obj\Debug\CalculadoraCSharp.csprojAssemblyReference.cache
+C:\Users\Gabri\Programas\Git\Rep_calc_cs\CalculadoraCSharp\obj\Debug\CalculadoraCSharp.MainFrame.resources
+C:\Users\Gabri\Programas\Git\Rep_calc_cs\CalculadoraCSharp\obj\Debug\CalculadoraCSharp.Properties.Resources.resources
+C:\Users\Gabri\Programas\Git\Rep_calc_cs\CalculadoraCSharp\obj\Debug\CalculadoraCSharp.csproj.GenerateResource.cache
+C:\Users\Gabri\Programas\Git\Rep_calc_cs\CalculadoraCSharp\obj\Debug\CalculadoraCSharp.exe
+C:\Users\Gabri\Programas\Git\Rep_calc_cs\CalculadoraCSharp\obj\Debug\CalculadoraCSharp.pdb
