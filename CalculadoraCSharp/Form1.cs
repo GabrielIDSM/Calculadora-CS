@@ -111,7 +111,13 @@ namespace CalculadoraCSharp
 
         private void buttonSub_Click(object sender, EventArgs e)
         {
-            AdicionaAExpressao('-');
+            char[] array = getExpressao().ToCharArray();
+            if (getExpressao().Length > 1) if (array[getExpressao().Length - 1] == '-')
+                {
+                    AdicionaAExpressao("(-");
+                }
+                else AdicionaAExpressao('-');
+            else AdicionaAExpressao('-');
         }
 
         private void buttonMul_Click(object sender, EventArgs e)
@@ -162,7 +168,8 @@ namespace CalculadoraCSharp
         {
             Expressoes E = new Expressoes(getExpressao());
             double resultado = E.CalculaExpressao();
-            txtbxResultado.Text = Convert.ToString(resultado);
+            if (!Double.IsNaN(resultado)) txtbxResultado.Text = Convert.ToString(resultado);
+            else txtbxResultado.Text = "Erro";
         }
 
         private void buttonClean_Click(object sender, EventArgs e)
@@ -182,6 +189,11 @@ namespace CalculadoraCSharp
                 setExpressao("");
             }
             AtualizaLabelExpressao();
+        }
+
+        private void buttonCResult_Click(object sender, EventArgs e)
+        {
+            txtbxResultado.Text = "";
         }
     }
 }

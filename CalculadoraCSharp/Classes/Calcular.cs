@@ -99,6 +99,10 @@ namespace CalculadoraCSharp.Classes
         {
             char[] array = getExpressao().ToCharArray();
             int i = 0;
+            if (array[0] == '+' && array[0] == operador1
+                || array[0] == '+' && array[0] == operador2
+                || array[0] == '-' && array[0] == operador1
+                || array[0] == '-' && array[0] == operador2) i++;
             while (i < array.Length)
             {
                 if (array[i] == operador1 || array[i] == operador2)
@@ -192,7 +196,7 @@ namespace CalculadoraCSharp.Classes
             String operando = "";
             for (int i = index + 1; i < array.Length; i++)
             {
-                if (VerificaOperador(array[i]))
+                if (VerificaOperador(array[i]) && !(i == index + 1 && (array[index + 1] == '+' || array[index + 1] == '-')))
                 {
                     break;
                 }
@@ -206,7 +210,7 @@ namespace CalculadoraCSharp.Classes
             String operando = "";
             for (int i = index - 1; i >= 0; i--)
             {
-                if (VerificaOperador(array[i]))
+                if (VerificaOperador(array[i]) && !(i == 0 && array[0] == '-'))
                 {
                     break;
                 }
@@ -221,7 +225,7 @@ namespace CalculadoraCSharp.Classes
             String operando1 = "";
             for(int i = index - 1; i >= 0; i--)
             {
-                if (VerificaOperador(array[i]))
+                if (VerificaOperador(array[i]) && !(i == 0 && array[0] == '-'))
                 {
                     break;
                 }
@@ -232,7 +236,7 @@ namespace CalculadoraCSharp.Classes
             String operando2 = "";
             for (int i = index + 1; i < array.Length; i++)
             {
-                if (VerificaOperador(array[i]))
+                if (VerificaOperador(array[i]) && !(i == index + 1 && (array[index + 1] == '+' || array[index + 1] == '-' )))
                 {
                     break;
                 }
@@ -254,7 +258,7 @@ namespace CalculadoraCSharp.Classes
                 aux = "";
                 for (int i = index - 1; i >= 0; i--)
                 {
-                    if (VerificaOperador(array[i]))
+                    if (VerificaOperador(array[i]) && !(i == 0 && array[0] == '-'))
                     {
                         break;
                     }
@@ -262,7 +266,7 @@ namespace CalculadoraCSharp.Classes
                 }
                 for (int i = index + 1; i < array.Length; i++)
                 {
-                    if (VerificaOperador(array[i]))
+                    if (VerificaOperador(array[i]) && !(i == index + 1 && (array[index + 1] == '+' || array[index + 1] == '-')))
                     {
                         break;
                     }
@@ -312,14 +316,59 @@ namespace CalculadoraCSharp.Classes
                 return false;
             }
         }
+
+        private void SubstituiDuploSinal()
+        {
+            String expressao = "";
+            char[] array = getExpressao().ToCharArray();
+            int i = 0;
+            while(i < array.Length - 1)
+            {
+                if(array[i] == '+' && array[i+1] == '+')
+                {
+                    expressao += array[i];
+                    i += 2;
+                } 
+                else if (array[i] == '+' && array[i + 1] == '-')
+                {
+                    expressao += array[i];
+                    i += 2;
+                }
+                else if (array[i] == '-' && array[i + 1] == '+')
+                {
+                    expressao += array[i];
+                    i += 2;
+                }
+                else
+                {
+                    expressao += array[i];
+                    i++;
+                }
+            }
+            expressao += array[array.Length - 1];
+            setExpressao(expressao);
+        }
+
         public double CalculaExpressao()
         {
-            CalculaFat();
-            CalculaPorOperador('L', 'l');
-            CalculaPorOperador('^', 'R');
-            CalculaPorOperador('*', '/');
-            CalculaPorOperador('+', '-');
-            return Convert.ToDouble(getExpressao());
+            try
+            {
+                SubstituiDuploSinal();
+                CalculaFat();
+                SubstituiDuploSinal();
+                CalculaPorOperador('L', 'l');
+                SubstituiDuploSinal();
+                CalculaPorOperador('^', 'R');
+                SubstituiDuploSinal();
+                CalculaPorOperador('*', '/');
+                SubstituiDuploSinal();
+                CalculaPorOperador('+', '-');
+                SubstituiDuploSinal();
+                return Convert.ToDouble(getExpressao());
+            }catch(Exception e)
+            {
+                return Double.NaN;
+            } 
         }
     }
 }

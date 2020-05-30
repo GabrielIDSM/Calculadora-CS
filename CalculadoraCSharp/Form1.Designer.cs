@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFrame));
             this.txtbxExpressao = new System.Windows.Forms.TextBox();
             this.txtbxResultado = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -55,6 +56,7 @@
             this.buttonClPar = new System.Windows.Forms.Button();
             this.buttonLn = new System.Windows.Forms.Button();
             this.buttonLog = new System.Windows.Forms.Button();
+            this.buttonCResult = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtbxExpressao
@@ -72,7 +74,7 @@
             this.txtbxResultado.Location = new System.Drawing.Point(12, 53);
             this.txtbxResultado.Name = "txtbxResultado";
             this.txtbxResultado.ReadOnly = true;
-            this.txtbxResultado.Size = new System.Drawing.Size(456, 35);
+            this.txtbxResultado.Size = new System.Drawing.Size(416, 35);
             this.txtbxResultado.TabIndex = 1;
             // 
             // button1
@@ -375,11 +377,24 @@
             this.buttonLog.UseVisualStyleBackColor = false;
             this.buttonLog.Click += new System.EventHandler(this.buttonLog_Click);
             // 
+            // buttonCResult
+            // 
+            this.buttonCResult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.buttonCResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCResult.Location = new System.Drawing.Point(434, 53);
+            this.buttonCResult.Name = "buttonCResult";
+            this.buttonCResult.Size = new System.Drawing.Size(34, 34);
+            this.buttonCResult.TabIndex = 27;
+            this.buttonCResult.Text = "C";
+            this.buttonCResult.UseVisualStyleBackColor = false;
+            this.buttonCResult.Click += new System.EventHandler(this.buttonCResult_Click);
+            // 
             // MainFrame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(481, 362);
+            this.ClientSize = new System.Drawing.Size(480, 362);
+            this.Controls.Add(this.buttonCResult);
             this.Controls.Add(this.buttonLog);
             this.Controls.Add(this.buttonLn);
             this.Controls.Add(this.buttonClPar);
@@ -407,6 +422,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtbxResultado);
             this.Controls.Add(this.txtbxExpressao);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainFrame";
             this.Text = "Calculadora";
@@ -444,6 +460,7 @@
         private System.Windows.Forms.Button buttonClPar;
         private System.Windows.Forms.Button buttonLn;
         private System.Windows.Forms.Button buttonLog;
+        private System.Windows.Forms.Button buttonCResult;
     }
 }
 
